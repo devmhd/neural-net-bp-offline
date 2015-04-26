@@ -176,6 +176,7 @@ public class NeuralNetwork {
 
 		}
 
+		
 		int target1, target2, target3;
 		target1 = target2 = target3 = 0;
 
@@ -193,7 +194,7 @@ public class NeuralNetwork {
 		outputNeurons[2].updateWeightsInHiddenAndOutput(neurons[n_hidden_layers-1]);
 
 
-
+		// Update hidden layers (except first)
 		for(int layerIndex = n_hidden_layers-1; layerIndex>0; --layerIndex){
 
 			Neuron[] laterNeurons;

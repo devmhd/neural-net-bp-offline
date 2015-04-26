@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Neuron {
@@ -19,6 +20,8 @@ public class Neuron {
 	
 	public Neuron(int type, int n_incoming_edge, int serial){
 		
+		Random rand = new Random(System.currentTimeMillis());
+		
 		this.type = type;
 		this.n_incoming_edge = n_incoming_edge;
 		this.serial = serial;
@@ -29,7 +32,7 @@ public class Neuron {
 		for(int i=0; i<n_incoming_edge; ++i){
 			
 			// between -1 and 1
-			weights[i] = (float) (1 - Math.random() * 2);
+			weights[i] = (float) (1 - rand.nextDouble() * 2);
 		}
 		
 	}

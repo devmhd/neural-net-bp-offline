@@ -11,7 +11,7 @@ public class G {
 	
 	public static final double ERROR_TOLERANCE = 0.1;
 	
-	public static final double ERROR_DIFF_THRESHOLD = 1E-6;
+	public static final double ERROR_THRESHOLD = 1E-2;
 	
 	public static final float LEARNING_RATE = (float) 1.5;
 	

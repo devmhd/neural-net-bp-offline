@@ -10,14 +10,19 @@ public class Main {
 		G.allTestData =  DataLoader.loadData("test.data");
 		
 		
-		NeuralNetwork network = new NeuralNetwork(5, 5, 3, 3);
+		NeuralNetwork network = new NeuralNetwork(2, 5, 3, 3);
 		
 		
-		double prevError = 0, errorDiff;
+		double prevError = 0, errorDiff=0;
+		
+		
+		double error = 0;
+		
+		int n_iteration = 0;
 		
 		do{
 			
-			double error = 0;
+			error = 0;
 			
 			
 			for(DataInstance data : G.allTrainingData){
@@ -27,13 +32,15 @@ public class Main {
 				
 			}
 			
-			errorDiff = error - prevError;
+		//	errorDiff = error - prevError;
 			System.out.println("error is " + error + " diff " + errorDiff);
 			
-			prevError = error;
+			n_iteration++;
+			
+		//	prevError = error;
 			
 			
-		}while(Math.abs(errorDiff) > G.ERROR_DIFF_THRESHOLD);
+		}while(error > G.ERROR_THRESHOLD && n_iteration<10000);
 		
 		// Training finished
 		int nPos = 0;
@@ -45,6 +52,7 @@ public class Main {
 		
 		
 		System.out.print("\n\n\n");
+		System.out.println("Iterations: " + n_iteration);
 		System.out.println("" + nPos + " correctly classified out of " + G.allTestData.size() );
 		System.out.println("Accuracy is " + (float)(nPos * 100.00 / G.allTestData.size()) + "%");
 		
