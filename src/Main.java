@@ -13,7 +13,7 @@ public class Main {
 		NeuralNetwork network = new NeuralNetwork(2, 5, 3, 3);
 		
 		
-		double prevError = 0, errorDiff=0;
+
 		
 		
 		double error = 0;
@@ -32,17 +32,19 @@ public class Main {
 				
 			}
 			
-		//	errorDiff = error - prevError;
-			System.out.println("error is " + error + " diff " + errorDiff);
+
+			System.out.println("error is " + error);
 			
 			n_iteration++;
 			
-		//	prevError = error;
+	
 			
 			
-		}while(error > G.ERROR_THRESHOLD && n_iteration<10000);
+		}while(error > G.ERROR_THRESHOLD && n_iteration<5000);
 		
 		// Training finished
+		
+		
 		int nPos = 0;
 		for(DataInstance data : G.allTestData){
 			
@@ -52,10 +54,10 @@ public class Main {
 		
 		
 		System.out.print("\n\n\n");
-		System.out.println("Iterations: " + n_iteration);
-		System.out.println("" + nPos + " correctly classified out of " + G.allTestData.size() );
+		System.out.println("Iterations: " + n_iteration + ". Correctly classified: " + nPos + "/" + G.allTestData.size());
+	//	System.out.println("" + nPos + " correctly classified out of " + G.allTestData.size() );
 		System.out.println("Accuracy is " + (float)(nPos * 100.00 / G.allTestData.size()) + "%");
-		
+		System.out.println();
 		
 		
 		

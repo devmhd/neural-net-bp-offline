@@ -13,7 +13,7 @@ public class G {
 	
 	public static final double ERROR_THRESHOLD = 1E-2;
 	
-	public static final float LEARNING_RATE = (float) 1.5;
+	public static final float LEARNING_RATE = (float) 1.0;
 	
 	public static ArrayList<DataInstance> allTrainingData;
 	public static ArrayList<DataInstance> allTestData;

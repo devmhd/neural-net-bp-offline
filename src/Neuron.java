@@ -12,7 +12,7 @@ public class Neuron {
 	int serial;
 	
 	public float[] weights;
-	public float[] oldWeights;
+//	public float[] oldWeights;
 	
 	public float output;
 	
@@ -27,7 +27,7 @@ public class Neuron {
 		this.serial = serial;
 		
 		weights = new float[n_incoming_edge];
-		oldWeights = new float[n_incoming_edge];
+//		oldWeights = new float[n_incoming_edge];
 		
 		for(int i=0; i<n_incoming_edge; ++i){
 			
@@ -53,7 +53,7 @@ public class Neuron {
 		
 		for(int i=0; i<laterNeurons.length; ++i){
 			
-			errSum += laterNeurons[i].error * laterNeurons[i].oldWeights[serial];
+			errSum += laterNeurons[i].error * laterNeurons[i].weights[serial];
 		}
 		
 		error = output * (1-output) * errSum;
@@ -62,30 +62,22 @@ public class Neuron {
 	
 	public void updateWeightsInHiddenAndOutput(Neuron[] prevNeurons){
 		
-		for(int i=0; i<n_incoming_edge; ++i){
-			
-			oldWeights[i] = weights[i];
-			
-		}
+
 		
 		for(int i=0; i<n_incoming_edge; ++i){
 			
-			weights[i] = oldWeights[i] + G.LEARNING_RATE * error * prevNeurons[i].output;
+			weights[i] = weights[i] + G.LEARNING_RATE * error * prevNeurons[i].output;
 		}
 		
 	}
 	
 	public void updateWeightsInInput(float[] prevOutputs){
 		
-		for(int i=0; i<n_incoming_edge; ++i){
-			
-			oldWeights[i] = weights[i];
-			
-		}
+
 		
 		for(int i=0; i<n_incoming_edge; ++i){
 			
-			weights[i] = oldWeights[i] + G.LEARNING_RATE * error * prevOutputs[i];
+			weights[i] = weights[i] + G.LEARNING_RATE * error * prevOutputs[i];
 		}
 		
 	}
